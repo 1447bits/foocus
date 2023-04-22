@@ -1,0 +1,34 @@
+(*) - denote key points
+(-) - denote tasks
+
+(*) you choose a bucket name,  say web dev
+(*) buckets are the records of given skill such as web dev
+(*) bucket contain all your logs and timer history where you can store how much time you spended productive 
+(*) this app can also be used in offline mode
+    download the zip and the index.html is the application which will run on your browser even without internet
+    browser application.
+
+------------------------------------------------------------------------------------------------------
+
+(-) a nav bar to navigate into different buckets
+(-) a add button to add new buckets
+(-) bucket attributes
+    1. bucket name (.title)
+    2. bucket timer (.timer)
+    3. bucket set
+    4. bucket reset
+    5. bucket log
+(-) A bucket contains a 
+    1. timer
+    2. Set button
+    3. reset Button
+    4. log button
+(-) a main container containing all your buckets inside a card, named bucket container.
+(-) bucket log pops up a window containing all logs
+    logs include : 1. previous timer history
+    2. total time spent
+    3. level achived
+(-) 
+
+
+points to add
