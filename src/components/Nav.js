@@ -16,9 +16,7 @@ export function Nav() {
 
     const navIconStyles = {
         height: "50px",
-        // width : "50px",
         minWidth: "50px",
-        // background: "#d7d8ec",
         background: "#cccee5",
         borderRadius: "25px",
         fontWeight: "bold",
