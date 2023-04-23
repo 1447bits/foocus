@@ -2,6 +2,7 @@ import React from "react";
 import ProfileIcon from "../icons/profile-icon.png"
 import googleSignin from "../images/googlesignin.png"
 import LoginPageBG from "../images/loginpageBG.png"
+import { motion } from "framer-motion";
 
 export class LoginPage extends React.Component {
     render() {
@@ -27,7 +28,7 @@ export class LoginPage extends React.Component {
             <div id="loginPageBG" 
             style={{
                 position: "absolute",
-                top: "30vh",
+                top: "45vh",
                 left :"5vw",
             }}
             >
@@ -66,7 +67,7 @@ export class LoginPage extends React.Component {
                         Password
                         <input style={inputStyles} type="password" />
                     </label>
-                    <button id="LoginBtn" style={{
+                    <motion.button id="LoginBtn" style={{
                         all: "unset",
                         background: "#6970EF",
                         textAlign: "center",
@@ -79,9 +80,11 @@ export class LoginPage extends React.Component {
                         cursor :"pointer",
                         fontSize: "1.3em",
                         marginTop: "1em",                        
-                    }}>
+                    }}
+                    whileHover={{opacity: "0.8"}}
+                    >
                         LOGIN
-                    </button>
+                    </motion.button>
                     <span style={{ textAlign: "center" }}>
                         ( OR )
                     </span>
