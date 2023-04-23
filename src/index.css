@@ -4,7 +4,8 @@
   box-sizing: border-box;
 }
 #root {
-  background: linear-gradient(#e7e7f4, #d8d9f1);
+  /* background: linear-gradient(#e7e7f4, #d8d9f1); */
+  background: linear-gradient(#dbdbea, #b8b9d2);
 }
 body {
   margin: 0;
