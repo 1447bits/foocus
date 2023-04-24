@@ -5,7 +5,7 @@
 }
 #root {
   /* background: linear-gradient(#e7e7f4, #d8d9f1); */
-  background: linear-gradient(#dbdbea, #b8b9d2);
+  background: linear-gradient(#dbdbea, #b0b1ce);
 }
 body {
   margin: 0;
@@ -20,4 +20,16 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+::-webkit-scrollbar {
+  background: rgb(217, 217, 235);
+  max-width: 1vw;
+  min-width: 1vw;
+}
+::-webkit-scrollbar-thumb {
+  width: 90%;
+  background: rgb(172, 172, 236);
+}
+#LoginPage::-webkit-scrollbar {
+  display: none;
 }
