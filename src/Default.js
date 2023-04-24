@@ -1,12 +1,15 @@
 import React from "react";
 import { Nav } from "./components/Nav";
-import { LoginPage } from "./pages/LoginPage";
 
 export default class Default extends React.Component {
+    constructor(props) {
+        super(props)
+    }
+
     render() {
         return <>
             <Nav />
-            <LoginPage />
+            {this.props.children}
         </>
     }
 }

@@ -21,6 +21,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+a {
+  all: unset;
+}
 ::-webkit-scrollbar {
   background: rgb(217, 217, 235);
   max-width: 1vw;
