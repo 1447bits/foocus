@@ -4,11 +4,100 @@
     min-height: 100vh;
 }
 
-#card-container::-webkit-scrollbar {
+#new-bucket-form-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* #new-bucket-form >  */
+#newBucket-form {
+    display: flex;
+    width: 80%;
+    height: fit-content;
+    max-width: 550px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+    background-color: #E6E7F9;
+    padding: 2em;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 1em;
+    margin-top: 10vh;
+}
+
+#newBucket-form-topbar {
+    display: flex;
+    color: #6C6B9A;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em;
+}
+
+#newBucket-form-topbar img {
+    width: 1.3em;
+    height: 1.3em;
+}
+
+#newBucket-formflelds {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6em;
+    width: 75%;
+}
+#newBucket-formflelds>label {
+    display: flex;
+    width: 100%;
+    color: #7D7E82;
+    gap: 0.3em;
+    flex-direction: column;
+}
+
+#newBucket-formflelds>label>input {
+    background: transparent;
+    border-radius: 0.1px;
+    border: solid 1px #B3B3B3;
+    height: 2.5em;
+    padding-inline: 0.7em;
+    color: #353536;
+    width: 100%;
+    font-size: 1em;
+}
+#newBucket-formbtns {
+    justify-content: right;
+    width: 80%;
+    display: flex;
+    gap: 1.5em;
+}
+#newBucket-formbtns > button:hover {
+    opacity: 0.8;
+}
+#newBucket-formbtns > button {
+    all: unset;
+    font-weight: bold;
+    border: 1px solid #6a7390;
+    padding: 0.5em 0.8em;
+    border-radius: 0.3em;
+    color: rgb(34, 36, 62);
+}
+#newBucket-formbtns #submitbtn {
+    background: #46D591;
+}
+.red {
+    color: red;
+}
+
+/* bucket container stylings */
+
+#bucket-container::-webkit-scrollbar {
     display: none;
 }
-#card-container {
+
+#bucket-container {
     display: grid;
+    z-index: 2;
     overflow: scroll;
     gap: 1.5em;
     max-width: 1000px;
@@ -16,9 +105,10 @@
     grid-template-columns: repeat(4, 1fr);
 }
 
-#AdditionCard{
+#AdditionCard {
     margin-bottom: 1em;
 }
+
 #AdditionCard>button {
     all: unset;
     color: #70738A;
@@ -58,12 +148,15 @@
     margin-inline: auto;
     border: 1px solid #A3A5AD;
 }
+
 .card-title {
     color: #6C6B9A;
 }
+
 .card-totalLog p:not(:nth-last-of-type(1)) {
     font-weight: bold;
 }
+
 .card-totalLog {
     color: #BC3B33;
     border: 1px solid #C9C9DD;
@@ -71,16 +164,19 @@
     padding: 5px;
     text-align: center;
 }
+
 .card-totaltime {
     font-size: 1.5em;
 }
-.card-prevLogs  {
+
+.card-prevLogs {
     font-weight: bold;
     text-align: center;
     display: flex;
     flex-direction: column;
     /* gap: 0.5em; */
 }
+
 .card-prevLogs p:not(:first-of-type) {
     font-size: 1.4em;
 }
