@@ -1,23 +1,26 @@
 import "../styles/bucket.css"
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 import crossicon from "../icons/cross-icon.png"
 
 
 function Card(props) {
-    return <div className='card'>
-        <h1 className='card-title'>{props.cardTitle}</h1>
-        <span className='card-totalLog'>
-            <p className="card-totaltime">{props.totalLog.join(" : ")}</p>
-            <p>Total time spent</p>
-        </span>
-        <span className='card-prevLogs'>
-            <p>Previous logs</p>
-            {props.latestLogs.map((log) => {
-                return <p>{log.join(" : ")}</p>
-            })}
-        </span>
-        <p>More...</p>
-    </div>
+    return <Link to={"/expendBucket"} state = {{ title : props.cardTitle }} >
+        <div className='card'>
+            <h1 className='card-title'>{props.cardTitle}</h1>
+            <span className='card-totalLog'>
+                <p className="card-totaltime">{props.totalLog.join(" : ")}</p>
+                <p>Total time spent</p>
+            </span>
+            <span className='card-prevLogs'>
+                <p>Previous logs</p>
+                {props.latestLogs.map((log) => {
+                    return <p>{log.join(" : ")}</p>
+                })}
+            </span>
+            <p>More...</p>
+        </div>
+    </Link>
 }
 
 
@@ -34,11 +37,11 @@ function BucketPage(props) {
     }
 
     const newCard = () => {
-        
+
         let card_title = document.getElementById("newbucket-title").value
         document.getElementById("newbucket-title").style.border = "solid 1px #B3B3B3"
-        
-        if (card_title != "") {
+
+        if (card_title !== "") {
 
             setcard(Allcards.concat(<Card
                 cardTitle={card_title}
@@ -48,7 +51,7 @@ function BucketPage(props) {
             setvisibility(false)
         } else {
             document.getElementById("newbucket-title").style.border = "2px solid red"
-            document.getElementById("newbucket-title").addEventListener("input", (e)=>{
+            document.getElementById("newbucket-title").addEventListener("input", (e) => {
                 e.target.style.border = "solid 1px #B3B3B3"
             })
             return
@@ -97,12 +100,12 @@ function BucketPage(props) {
                         <label  >
                             Rewoke Time
                             <input type="text"
-                                id="newbucket-rewoketime"/>
+                                id="newbucket-rewoketime" />
                         </label>
                         <label  >
                             Daily Limit
                             <input type="text"
-                                id="newbucket-dailylimit"/>
+                                id="newbucket-dailylimit" />
                         </label>
                     </div>
                     <div id="newBucket-formbtns">
@@ -114,7 +117,7 @@ function BucketPage(props) {
                         </button>
                         <button
                             id="submitbtn"
-                            onClick={()=>newCard()}
+                            onClick={() => newCard()}
                             formAction="submit"
                         >
                             Create
