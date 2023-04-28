@@ -1,10 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import ProfileIcon from "../icons/profile-icon.png"
 import googleSignin from "../images/googlesignin.png"
 import LoginPageBG from "../images/loginpageBG.png"
 import { motion } from "framer-motion";
 
 export class LoginPage extends React.Component {
+
+
     render() {
         const labelStyles = {
             display: "flex",
@@ -23,22 +26,22 @@ export class LoginPage extends React.Component {
         }
 
         return <div id="LoginPage"
-            style={{ 
-                height: "100vh" ,
-                overflow : "auto",
+            style={{
+                height: "100vh",
+                overflow: "auto",
             }}
         >
             <div style={{
-                maxWidth : "750px",
-                marginInline : "auto",
-                overflow : "hidden",
+                maxWidth: "750px",
+                marginInline: "auto",
+                overflow: "hidden",
                 // maxHeight : "600px"
             }}>
                 <div id="loginPageBG"
                     style={{
                         position: "fixed",
-                        marginLeft : '-8%',
-                        marginTop : '15%',
+                        marginLeft: '-8%',
+                        marginTop: '15%',
                     }}
                 >
                     <img src={LoginPageBG} width={"100%"} alt="background" />
@@ -69,31 +72,40 @@ export class LoginPage extends React.Component {
                         gap: "1em"
                     }}>
                         <label style={labelStyles}>
-                            Email
-                            <input style={inputStyles} type="email" />
+                            Email / Username
+                            <input style={inputStyles} value={"nomailn@nomail.com"} type="text" />
                         </label>
                         <label style={labelStyles}>
                             Password
-                            <input style={inputStyles} type="password" />
+                            <input style={inputStyles} value={"admin"} type="password" />
                         </label>
-                        <motion.button id="LoginBtn" style={{
-                            all: "unset",
-                            background: "#6970EF",
-                            textAlign: "center",
-                            padding: "0.4em",
-                            borderRadius: "6px",
-                            marginInline: "auto",
-                            color: "#E3E3F7",
-                            fontWeight: "bold",
-                            width: "40%",
-                            cursor: "pointer",
-                            fontSize: "1.3em",
-                            marginTop: "1em",
-                        }}
-                            whileHover={{ opacity: "0.8" }}
-                        >
-                            LOGIN
-                        </motion.button>
+                        <div className="loginBtn"
+                            style={{
+                                marginInline: "auto",
+                                width: "fit-content",
+                            }}>
+                            <Link to={"/buckets"} state={{ page : "Buckets" }}>
+                                <motion.button id="LoginBtn" style={{
+                                    all: "unset",
+                                    background: "#6970EF",
+                                    textAlign: "center",
+                                    paddingInline: "0.8em",
+                                    borderRadius: "6px",
+                                    color: "#E3E3F7",
+                                    fontWeight: "bold",
+                                    width: "fit-content",
+                                    cursor: "pointer",
+                                    fontSize: "1.3em",
+                                    marginTop: "1em",
+                                    paddingTop: "0.4em",
+                                    paddingBottom: "0.4em",
+                                }}
+                                    whileHover={{ opacity: "0.8" }}
+                                >
+                                    LOGIN
+                                </motion.button>
+                            </Link>
+                        </div>
                         <span style={{ textAlign: "center" }}>
                             ( OR )
                         </span>

@@ -42,8 +42,8 @@ function BucketPage(props) {
 
             setcard(Allcards.concat(<Card
                 cardTitle={card_title}
-                totalLog={[310, 113, 256]}
-                latestLogs={[[1, 23, 6], [2, 56, 23]]}
+                totalLog={[0, 0, 0]}
+                latestLogs={[[0, 0, 0], [0, 0, 0]]}
             />))
             setvisibility(false)
         } else {

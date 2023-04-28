@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Website_icon from "../icons/focus-icon.png"
 import navHome from "../icons/nav-home.png"
 import navInfo from "../icons/nav-info.png"
@@ -7,7 +8,8 @@ import navBucket from "../icons/nav-bucket.png"
 
 import { motion } from "framer-motion";
 
-export function Nav() {
+
+export function Nav(props) {
 
     const [page, setpage] = useState("Home")
     const [currpage, setcurrpage] = useState("Home")
@@ -39,7 +41,7 @@ export function Nav() {
             </h1>
         </div>
         <div id="nav-icons" style={{ display: "flex", marginLeft: "calc((50vw - (200px + (1em * 5)))", gap: "1em" }}>
-            <a href="/">
+            <Link to="/" onClick={() => setcurrpage("Home")}>
                 <motion.div className="nav-icon"
                     onMouseEnter={() => {
                         setpage("Home")
@@ -54,8 +56,8 @@ export function Nav() {
                     <img src={navHome} alt="icon" />
                     <p>Home</p>
                 </motion.div>
-            </a>
-            <a href="/buckets">
+            </Link>
+            <Link to="/buckets" onClick={() => setcurrpage("Buckets")}>
                 <motion.div className="nav-icon"
                     onMouseEnter={() => {
                         setpage("Buckets")
@@ -70,8 +72,8 @@ export function Nav() {
                     <img src={navBucket} alt="icon" />
                     <p>Buckets</p>
                 </motion.div>
-            </a>
-            <a>
+            </Link>
+            <Link>
                 <motion.div className="nav-icon"
                     onMouseEnter={() => {
                         setpage("Info")
@@ -86,8 +88,8 @@ export function Nav() {
                     <img src={navInfo} alt="icon" />
                     <p>Info</p>
                 </motion.div>
-            </a>
-            <a>
+            </Link>
+            <Link to={"https://github.com/Mr-okey/foocus"} >
                 <motion.div className="nav-icon"
                     onMouseEnter={() => {
                         setpage("Contribute")
@@ -102,7 +104,7 @@ export function Nav() {
                     <img src={navGithub} alt="icon" />
                     <p>Contribute</p>
                 </motion.div>
-            </a>
+            </Link>
         </div>
     </div>
 }
