@@ -7,7 +7,6 @@ import { motion } from "framer-motion";
 
 export class LoginPage extends React.Component {
 
-
     render() {
         const labelStyles = {
             display: "flex",
@@ -84,7 +83,10 @@ export class LoginPage extends React.Component {
                                 marginInline: "auto",
                                 width: "fit-content",
                             }}>
-                            <Link to={"/buckets"} state={{ page : "Buckets" }}>
+                            <Link to={"/buckets"} state={{ page : "Buckets" }} 
+                            onClick={() => {
+                                localStorage.setItem("login", true)
+                            }}>
                                 <motion.button id="LoginBtn" style={{
                                     all: "unset",
                                     background: "#6970EF",
@@ -100,7 +102,7 @@ export class LoginPage extends React.Component {
                                     paddingTop: "0.4em",
                                     paddingBottom: "0.4em",
                                 }}
-                                    whileHover={{ opacity: "0.8" }}
+                                    whileHover={{ opacity :"0.8" }}
                                 >
                                     LOGIN
                                 </motion.button>

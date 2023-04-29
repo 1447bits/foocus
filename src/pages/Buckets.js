@@ -1,12 +1,12 @@
 import "../styles/bucket.css"
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, json } from "react-router-dom";
 import crossicon from "../icons/cross-icon.png"
 
 
 function Card(props) {
-    return <Link to={"/expendBucket"} state = {{ title : props.cardTitle }} >
-        <div className='card'>
+    return <Link to={"/expendBucket"} state={{ title: props.cardTitle }} >
+        <div className='card' id={props.id}>
             <h1 className='card-title'>{props.cardTitle}</h1>
             <span className='card-totalLog'>
                 <p className="card-totaltime">{props.totalLog.join(" : ")}</p>
@@ -27,19 +27,43 @@ function Card(props) {
 
 function BucketPage(props) {
 
-    const [Allcards, setcard] = useState([])
+    // render previous cards from local storage
+    let prevcards = JSON.parse(localStorage.getItem("buckets"))
+    let restoreCards = []
+    
+    prevcards.map((bucket) => {
+
+        let thisBucketlatestLogs = [] 
+        for(let i = 0; i < 2; i++) {
+            thisBucketlatestLogs.push(bucket.alllogs[i])
+        }
+
+        restoreCards.push(<Card
+            cardTitle={bucket.title}
+            totalLog={bucket.totalLog}
+            latestLogs={thisBucketlatestLogs}
+            id={bucket.id}
+        />)
+    })
+
+    // states for visibility of bucket card form
+    const [Allcards, setcard] = useState(restoreCards)
     const [visibility, setvisibility] = useState(false)
 
+    // cancel form function which simply maked the from container display none
     const cancelFrom = () => {
         document.getElementById("newbucket-title").style.border = "solid 1px #B3B3B3"
         document.getElementById("newbucket-title").value = "";
         setvisibility(false)
     }
 
+    // new card function add new card to all cards array which is handeled usign usestate hook
     const newCard = () => {
 
         let card_title = document.getElementById("newbucket-title").value
         document.getElementById("newbucket-title").style.border = "solid 1px #B3B3B3"
+
+        let cardId = parseInt(localStorage.getItem("totalBuckets")) + 1
 
         if (card_title !== "") {
 
@@ -47,9 +71,11 @@ function BucketPage(props) {
                 cardTitle={card_title}
                 totalLog={[0, 0, 0]}
                 latestLogs={[[0, 0, 0], [0, 0, 0]]}
+                id={cardId}
             />))
             setvisibility(false)
         } else {
+            // display red border to card title inp if card title is not given
             document.getElementById("newbucket-title").style.border = "2px solid red"
             document.getElementById("newbucket-title").addEventListener("input", (e) => {
                 e.target.style.border = "solid 1px #B3B3B3"
@@ -57,6 +83,21 @@ function BucketPage(props) {
             return
         }
 
+        // create object of new card created
+        let cardObj = {
+            title: card_title,
+            totalLog: [0, 0, 0],
+            alllogs: [[0, 0, 0], [0, 0, 0]],
+            id: cardId
+        }
+
+        // store new card to local storage
+        let buckets = JSON.parse(localStorage.getItem("buckets"))
+        buckets.push(cardObj)
+        localStorage.setItem("buckets", JSON.stringify(buckets))
+        localStorage.setItem("totalBuckets", cardId)
+
+        // finally close form
         cancelFrom()
     }
 

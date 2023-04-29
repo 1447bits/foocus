@@ -62,11 +62,14 @@ h1 {
     gap: 5px;
 }
 
+.card-controls>button:hover {
+    background-color: #bbbbe1;
+}
 .card-controls>button {
     background-color: #CBCBE2;
     border: unset;
     border-radius: 10px;
-    padding: 0.5em 1.6  em;
+    padding: 0.5em 1.6em;
     cursor: pointer;
     display: flex;
     justify-content: center;

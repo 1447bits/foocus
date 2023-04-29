@@ -11,8 +11,8 @@ import { motion } from "framer-motion";
 
 export function Nav(props) {
 
-    const [page, setpage] = useState("Home")
-    const [currpage, setcurrpage] = useState("Home")
+    const [page, setpage] = useState(localStorage.getItem("page"))
+    const [currpage, setcurrpage] = useState(localStorage.getItem("page"))
 
     const navIconStyles = {
         height: "50px",
@@ -43,32 +43,32 @@ export function Nav(props) {
             </div>
         </Link>
         <div id="nav-icons" style={{ display: "flex", marginLeft: "calc((50vw - (200px + (1em * 5)))", gap: "1em" }}>
-            <Link to="/" onClick={() => setcurrpage("Home")}>
+            <Link to="/" onClick={() => setcurrpage("/")}>
                 <motion.div className="nav-icon"
                     onMouseEnter={() => {
-                        setpage("Home")
+                        setpage("/")
                     }}
                     onMouseLeave={() => {
                         setpage(currpage)
                     }}
                     animate={{
-                        width: page === "Home" || currpage === "Home" ? "fit-content" : "50px",
+                        width: page === "/" || currpage === "/" ? "fit-content" : "50px",
                     }}
                     style={navIconStyles}>
                     <img src={navHome} alt="icon" />
                     <p>Home</p>
                 </motion.div>
             </Link>
-            <Link to="/buckets" onClick={() => setcurrpage("Buckets")}>
+            <Link to="/buckets" onClick={() => setcurrpage("/buckets")}>
                 <motion.div className="nav-icon"
                     onMouseEnter={() => {
-                        setpage("Buckets")
+                        setpage("/buckets")
                     }}
                     onMouseLeave={() => {
                         setpage(currpage)
                     }}
                     animate={{
-                        width: page === "Buckets" || currpage === "Buckets" ? "fit-content" : "50px",
+                        width: page === "/buckets" || currpage === "/buckets" ? "fit-content" : "50px",
                     }}
                     style={navIconStyles} >
                     <img src={navBucket} alt="icon" />

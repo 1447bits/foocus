@@ -141,9 +141,9 @@
     flex-direction: column;
     justify-content: center;
     cursor: pointer;
-    padding: 1em;
+    padding: 0.5em 1.5em;
     align-items: center;
-    border-radius: 1em;
+    border-radius: 7.5%;
     width: 100%;
     margin-inline: auto;
     border: 1px solid #A3A5AD;
