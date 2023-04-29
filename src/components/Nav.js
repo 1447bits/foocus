@@ -30,16 +30,18 @@ export function Nav(props) {
     }
 
     return <div id="nav-bar" style={{ padding: "0.5em", display: "flex", overflow: "hidden" }}>
-        <div id="nav-logo" style={{ display: "flex", gap: "0.5em", alignItems: "center" }}>
-            <img src={Website_icon} style={{ width: "2em" }} alt="icon" />
-            <h1 style={{
-                fontSize: "1.7em",
-                color: "#202227",
-                textShadow: "-4px -2px 1px rgba(32, 34, 39, 0.49)"
-            }}>
-                FOOCUS
-            </h1>
-        </div>
+        <Link to="/" >
+            <div id="nav-logo" style={{ display: "flex", gap: "0.5em", alignItems: "center" }}>
+                <img src={Website_icon} style={{ width: "2em" }} alt="icon" />
+                <h1 style={{
+                    fontSize: "1.7em",
+                    color: "#202227",
+                    textShadow: "-4px -2px 1px rgba(32, 34, 39, 0.49)"
+                }}>
+                    FOOCUS
+                </h1>
+            </div>
+        </Link>
         <div id="nav-icons" style={{ display: "flex", marginLeft: "calc((50vw - (200px + (1em * 5)))", gap: "1em" }}>
             <Link to="/" onClick={() => setcurrpage("Home")}>
                 <motion.div className="nav-icon"
