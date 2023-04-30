@@ -34,7 +34,6 @@ export class LoginPage extends React.Component {
                 maxWidth: "750px",
                 marginInline: "auto",
                 overflow: "hidden",
-                // maxHeight : "600px"
             }}>
                 <div id="loginPageBG"
                     style={{
@@ -50,12 +49,13 @@ export class LoginPage extends React.Component {
                         width: "70%",
                         maxWidth: "650px",
                         marginInline: "auto",
+                        marginBottom: "15vh",
                         marginTop: "15vh",
                         padding: "7%",
                         background: "rgba(232, 232, 250, 0.5)",
                         boxShadow: "0px 0px 20px #959595",
                         backdropFilter: "blur(8px)",
-                        borderRadius: "0.5em"
+                        borderRadius: "0.5em",
                     }}
                 >
                     <span style={{ display: "flex", gap: "1em", marginInline: "auto", width: "fit-content" }}>
@@ -72,7 +72,7 @@ export class LoginPage extends React.Component {
                     }}>
                         <label style={labelStyles}>
                             Email / Username
-                            <input style={inputStyles} value={"nomailn@nomail.com"} type="text" />
+                            <input style={inputStyles} value={"nomail@nomail.com"} type="text" />
                         </label>
                         <label style={labelStyles}>
                             Password
@@ -83,9 +83,10 @@ export class LoginPage extends React.Component {
                                 marginInline: "auto",
                                 width: "fit-content",
                             }}>
-                            <Link to={"/buckets"} state={{ page : "Buckets" }} 
+                            <Link to={"/"} state={{ page : "/" }} 
                             onClick={() => {
                                 localStorage.setItem("login", true)
+                                window.location.reload()
                             }}>
                                 <motion.button id="LoginBtn" style={{
                                     all: "unset",

@@ -23,8 +23,6 @@ function Card(props) {
     </Link>
 }
 
-
-
 function BucketPage(props) {
 
     // render previous cards from local storage

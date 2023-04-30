@@ -44,6 +44,7 @@ h1 {
     color: #BC3B33;
     border: 1px solid #C9C9DD;
     border-radius: 1em;
+    min-width: 160px;
     padding: 5px;
     text-align: center;
 }

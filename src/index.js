@@ -10,7 +10,7 @@ if (buckets === null) {
   localStorage.setItem("buckets", JSON.stringify([]))
   localStorage.setItem("totalBuckets", 0)
 }
-localStorage.setItem("page", localStorage.getItem("login") === "true" ? "/buckets" : "/")
+localStorage.setItem("page", localStorage.getItem("page") === null ? "/" : localStorage.getItem("page"))
 
 const root = createRoot(document.getElementById("root"))
 
@@ -22,3 +22,4 @@ root.render(
 // ReactDOM.render(
 //   document.getElementById('root')
 // );
+

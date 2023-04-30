@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Website_icon from "../icons/focus-icon.png"
 import navHome from "../icons/nav-home.png"
 import navInfo from "../icons/nav-info.png"
@@ -11,8 +11,12 @@ import { motion } from "framer-motion";
 
 export function Nav(props) {
 
-    const [page, setpage] = useState(localStorage.getItem("page"))
-    const [currpage, setcurrpage] = useState(localStorage.getItem("page"))
+    const location = useLocation()
+
+    const [page, setpage] = useState(location.pathname)
+    const [currpage, setcurrpage] = useState(location.pathname)
+    // const [page, setpage] = useState(localStorage.getItem("page"))
+    // const [currpage, setcurrpage] = useState(localStorage.getItem("page"))
 
     const navIconStyles = {
         height: "50px",
@@ -43,7 +47,11 @@ export function Nav(props) {
             </div>
         </Link>
         <div id="nav-icons" style={{ display: "flex", marginLeft: "calc((50vw - (200px + (1em * 5)))", gap: "1em" }}>
-            <Link to="/" onClick={() => setcurrpage("/")}>
+            {/* <Link to="/" onClick={() => setcurrpage("/")}> */}
+            <Link to="/" onClick={() => {
+                setcurrpage("/")
+                localStorage.setItem("page", "/")
+            }}>
                 <motion.div className="nav-icon"
                     onMouseEnter={() => {
                         setpage("/")
@@ -59,7 +67,11 @@ export function Nav(props) {
                     <p>Home</p>
                 </motion.div>
             </Link>
-            <Link to="/buckets" onClick={() => setcurrpage("/buckets")}>
+            <Link to="/buckets" onClick={() => {
+                setcurrpage("/buckets")
+                localStorage.setItem("page", "/buckets")
+            }}>
+                {/* <Link to="/buckets" onClick={() => showPath()}> */}
                 <motion.div className="nav-icon"
                     onMouseEnter={() => {
                         setpage("/buckets")
@@ -75,16 +87,20 @@ export function Nav(props) {
                     <p>Buckets</p>
                 </motion.div>
             </Link>
-            <Link>
+            <Link to={"/info"} onClick={() => {
+                setcurrpage("/info")
+                localStorage.setItem("page", "/info")
+            }}>
+                {/* <Link to={"/info"} onClick={()=>showPath()}> */}
                 <motion.div className="nav-icon"
                     onMouseEnter={() => {
-                        setpage("Info")
+                        setpage("/info")
                     }}
                     onMouseLeave={() => {
                         setpage(currpage)
                     }}
                     animate={{
-                        width: page === "Info" || currpage === "Info" ? "fit-content" : "50px",
+                        width: page === "/info" || currpage === "/info" ? "fit-content" : "50px",
                     }}
                     style={navIconStyles} >
                     <img src={navInfo} alt="icon" />
