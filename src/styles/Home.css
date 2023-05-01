@@ -1,3 +1,68 @@
 #Home {
     min-height: 100vh;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding: 0px;
+    background: transparent;
+    padding-inline: 50px;
+    margin-top: 10vh;
+    overflow: scroll;
+}
+#Home::-webkit-scrollbar {
+    display: none;
+}
+
+#Home>h1 {
+    color: #393B42;
+}
+
+#home-logs {
+    margin-top: 2em;
+}
+
+.home-bucket {
+    width: 95%;
+    padding: 1.2em;
+    margin-bottom: 2em;
+    margin-inline: auto;
+}
+.home-bucket-heading {
+    text-align: center;
+    color: #626385;
+    display: flex;
+    gap: 0.5em;
+    align-items: center;
+    width: fit-content;
+    margin-inline: auto;
+}
+
+.home-bucket-heading > div {
+    width: 3.5em;
+    border-radius: 4px;
+    height: 8px;
+    margin-top: 0.5em;
+    background: #626385;
+}
+.home-its-been {
+    border: 3px solid #626385;
+    color: #626385;
+    font-size: calc(2em - 8px);
+    padding: 0.2em 1em;
+    margin-top: 0.8em;
+    width: fit-content;
+    border-radius: 100px;
+    font-weight: bold;
+}
+.logs {
+    margin-top: 1.2em;
+    color: #4d4e79;
+}
+.logs > h1{
+    color: #797aa5;
+}
+.home-log {
+    border-color: #797ab6;
+    width: 80%;
+    margin-top: 1em;
+    margin-left: 1.5em;
 }
