@@ -10,6 +10,10 @@ if (buckets === null) {
   localStorage.setItem("buckets", JSON.stringify([]))
   localStorage.setItem("totalBuckets", 0)
 }
+
+// initially if page is not defined default will be set to "/" i.e. Home
+// and afterwords all reloads set the page to previous page set  
+// even if you reload or close and restart the page navBar will set the state of current page from Url
 localStorage.setItem("page", localStorage.getItem("page") === null ? "/" : localStorage.getItem("page"))
 
 const root = createRoot(document.getElementById("root"))
@@ -19,7 +23,3 @@ root.render(
     <Foocus />
   </BrowserRouter>
 )
-// ReactDOM.render(
-//   document.getElementById('root')
-// );
-

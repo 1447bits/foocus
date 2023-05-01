@@ -11,12 +11,13 @@ import { motion } from "framer-motion";
 
 export function Nav(props) {
 
+    // declare useLocation hool
     const location = useLocation()
 
+    // inifially current page will be fetched from url path
+    // then at each navigation the local storage will be used to set the current page
     const [page, setpage] = useState(location.pathname)
     const [currpage, setcurrpage] = useState(location.pathname)
-    // const [page, setpage] = useState(localStorage.getItem("page"))
-    // const [currpage, setcurrpage] = useState(localStorage.getItem("page"))
 
     const navIconStyles = {
         height: "50px",
@@ -47,7 +48,6 @@ export function Nav(props) {
             </div>
         </Link>
         <div id="nav-icons" style={{ display: "flex", marginLeft: "calc((50vw - (200px + (1em * 5)))", gap: "1em" }}>
-            {/* <Link to="/" onClick={() => setcurrpage("/")}> */}
             <Link to="/" onClick={() => {
                 setcurrpage("/")
                 localStorage.setItem("page", "/")
