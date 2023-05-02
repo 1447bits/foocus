@@ -28,6 +28,7 @@ export function SetTimer(bucketID) {
 
             bucket_timer.innerHTML = `${hh < 10 ? "0" + hh : hh}:${mm < 10 ? "0" + mm : mm}:${ss < 10 ? "0" + ss : ss}`
         }, 1000)
+        
         reset.addEventListener("click", () => {
             clearInterval(timer)
             hh = mm = ss = 0

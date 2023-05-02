@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation } from 'react-router-dom';
 import "../styles/expandedPage.css"
 import backicon from "../icons/backIcon.png"
 import pauseIcon from "../icons/pauseIcon.png"
-import fill_pauseIcon from "../icons/playIconFilled.png"
 import playIcon from "../icons/playIcon.png"
+import stopIcon from "../icons/stopIcon.png"
+import { getFID } from "web-vitals";
 
 export default function Expandcard(props) {
-
-    const [play, setPlay] = useState(false)
 
     // get title from url using useLocation hook 
     const location = useLocation()
@@ -18,44 +17,48 @@ export default function Expandcard(props) {
     // array of card objects each object dedicated to a unique card of an unique id
     // id-1 means index of array starts with zero (0) and id starts with one (1)
     let ThisCard = JSON.parse(localStorage.getItem("card-buckets"))[id - 1]
+    console.log(ThisCard)
+
 
     let totalLog = ThisCard.totalLog
-    let latestLogs = ThisCard.alllogs
+    let latestLogs = []
+    for (let i = 0; i < 2; i++) {
+        latestLogs.push(ThisCard.alllogs[i])
+    }
 
-    const [thisTimer, settimer] = useState([0, 0, 0])
+    // state to store time
+    const [time, setTime] = useState(0);
 
-    // function playfunc() {
-    //     if (play) {
-    //         setreset(true)
-    //     }
-    //     const expandedcard_timer = document.getElementById("expandedcard-timer")
-    //     console.log("play")
-    //     setPlay(!play)
-    //     const timerInterval = setInterval(() => {
-    //         if (reset) {
-    //             expandedcard_timer.innerHTML = "00 : 00 : 00"
-    //             clearInterval(timerInterval)
-    //         }
-    //         let temptimer = thisTimer
-    //         if (temptimer[2] === 60) {
-    //             if (temptimer[1] === 59) {
-    //                 temptimer[2] = 0
-    //                 temptimer[1] = 0
-    //                 temptimer[0] += 1
-    //             }
-    //             temptimer[2] = 0
-    //             temptimer[1] += 1
-    //         } else {
-    //             temptimer[2] += 1
-    //         }
-    //         expandedcard_timer.innerHTML = temptimer.join(" : ")
-    //     }, 1000)
-    // }
-    // function pausefunc() {
-    //     const expandedcard_timer = document.getElementById("expandedcard-timer")
-    //     expandedcard_timer.innerHTML = "00 : 00 : 00"
-    //     console.log("pause")
-    // }
+    // state to check stopwatch running or not
+    const [isRunning, setIsRunning] = useState(false);
+
+    useEffect(() => {
+        let intervalId;
+        if (isRunning) {
+            // setting time from 0 to 60 every 60sec 
+            intervalId = setInterval(() => setTime(time + 1), 1000);
+        }
+        return () => clearInterval(intervalId);
+    }, [isRunning, time]);
+
+    // Hours calculation
+    const hours = Math.floor(time / 3600);
+
+    // Minutes calculation
+    const minutes = Math.floor((time % 3600) / 60);
+
+    // Seconds calculation
+    const seconds = Math.floor(time);
+
+    // Method to start and stop timer
+    const startAndStop = () => {
+        setIsRunning(!isRunning);
+    };
+
+    // Method to reset timer back to 0
+    const reset = () => {
+        setTime(0);
+    };
 
     return <div id="ExpandedCard-container">
         <div id="ExpandedCard">
@@ -68,16 +71,17 @@ export default function Expandcard(props) {
                         <p>Total time spent</p>
                     </div>
                     <div id="expandedcard-timer">
-                        00 : 00 : 00
+                        {/* padstart fills the value "0" for string length 2  */}
+                        {hours.toString().padStart(2, "0")}:
+                        {minutes.toString().padStart(2, "0")}:
+                        {seconds.toString().padStart(2, "0")}
                     </div>
                     <div className="card-controls">
-                        <button id="pause-btn" >
-                        {/* <button id="pause-btn" onClick={() => pausefunc()} > */}
-                            <img src={pauseIcon} />
+                        <button id="play-pause-btn" onClick={() => startAndStop()}>
+                            <img src={isRunning ? pauseIcon : playIcon} />
                         </button>
-                        <button id="play-stop-btn">
-                        {/* <button id="play-stop-btn" onClick={() => playfunc()}> */}
-                            <img src={play ? playIcon : fill_pauseIcon} />
+                        <button id="stop-btn" onClick={() => reset()} >
+                            <img src={stopIcon} />
                         </button>
                     </div>
                     <div className="card-previousLogs">
@@ -97,5 +101,5 @@ export default function Expandcard(props) {
                 </div>
             </div>
         </div>
-    </div >
+    </div>
 }
