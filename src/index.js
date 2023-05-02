@@ -1,14 +1,15 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, json } from "react-router-dom";
 import './index.css';
 import Foocus from './Default';
 
-let buckets = localStorage.getItem("buckets")
+let buckets = localStorage.getItem("card-buckets")
 if (buckets === null) {
-  localStorage.setItem("buckets", JSON.stringify([]))
+  localStorage.setItem("card-buckets", JSON.stringify([]))
   localStorage.setItem("totalBuckets", 0)
+  localStorage.setItem("logs", JSON.stringify([]))
 }
 
 // initially if page is not defined default will be set to "/" i.e. Home

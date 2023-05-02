@@ -5,7 +5,7 @@ import crossicon from "../icons/cross-icon.png"
 
 
 function Card(props) {
-    return <Link to={"/expendBucket"} state={{ title: props.cardTitle }} >
+    return <Link to={"/expendBucket"} state={{ id: props.id }} >
         <div className='card' id={props.id}>
             <h1 className='card-title'>{props.cardTitle}</h1>
             <span className='card-totalLog'>
@@ -26,23 +26,27 @@ function Card(props) {
 function BucketPage(props) {
 
     // render previous cards from local storage
-    let prevcards = JSON.parse(localStorage.getItem("buckets"))
+    let prevcards = JSON.parse(localStorage.getItem("card-buckets"))
     let restoreCards = []
-    
-    prevcards.map((bucket) => {
 
-        let thisBucketlatestLogs = [] 
-        for(let i = 0; i < 2; i++) {
-            thisBucketlatestLogs.push(bucket.alllogs[i])
-        }
+    if (prevcards !== null) {
 
-        restoreCards.push(<Card
-            cardTitle={bucket.title}
-            totalLog={bucket.totalLog}
-            latestLogs={thisBucketlatestLogs}
-            id={bucket.id}
-        />)
-    })
+        prevcards.map((bucket) => {
+
+            let latestLogs = []
+            for (let i = 0; i < 2; i++) {
+                latestLogs.push(bucket.alllogs[i])
+            }
+
+            restoreCards.push(<Card
+                cardTitle={bucket.title}
+                totalLog={bucket.totalLog}
+                latestLogs={latestLogs}
+                id={bucket.id}
+            />)
+        })
+
+    }
 
     // states for visibility of bucket card form
     const [Allcards, setcard] = useState(restoreCards)
@@ -64,7 +68,6 @@ function BucketPage(props) {
         let cardId = parseInt(localStorage.getItem("totalBuckets")) + 1
 
         if (card_title !== "") {
-
             setcard(Allcards.concat(<Card
                 cardTitle={card_title}
                 totalLog={[0, 0, 0]}
@@ -90,11 +93,11 @@ function BucketPage(props) {
         }
 
         // store new card to local storage
-        let buckets = JSON.parse(localStorage.getItem("buckets"))
-        buckets.push(cardObj)
-        localStorage.setItem("buckets", JSON.stringify(buckets))
+        let buckets_cards = JSON.parse(localStorage.getItem("card-buckets"))
+        buckets_cards.push(cardObj)
+        localStorage.setItem("card-buckets", JSON.stringify(buckets_cards))
         localStorage.setItem("totalBuckets", cardId)
-
+        
         // finally close form
         cancelFrom()
     }

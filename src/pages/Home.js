@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/Home.css"
 import { Link } from "react-router-dom";
 
-const No_Bucket_Preview = (props2) => {
+const NoBucketPreview = (props2) => {
     return <Link to={"/buckets"}>
         <div id="No_Bucket_Preview">
             <h1>+ Add Some cards</h1>
@@ -10,7 +10,7 @@ const No_Bucket_Preview = (props2) => {
     </Link>
 }
 
-function Bucket_Preview(props) {
+function BucketPreview(props) {
 
     return <div className="home-bucket">
         <div className="home-bucket-heading">
@@ -40,8 +40,8 @@ export default function Home(props) {
     return <div id="Home">
         <h1>Latest Logs</h1>
         <div id="home-logs">
-            <No_Bucket_Preview />
-            <Bucket_Preview
+            <NoBucketPreview />
+            <BucketPreview
                 title="New Card"
                 total={[10, 0, 0]}
                 prevlogs={[[["12", "06", "12"], "( Monday )", "Note"], [["13", "06", "12"], "( tuesday )", "Note 2"]]}
