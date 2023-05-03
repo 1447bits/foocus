@@ -57,6 +57,8 @@ export default function Expandcard(props) {
 
     // Method to reset timer back to 0
     const reset = () => {
+        let logtime = [hours, minutes, seconds]
+        console.log(logtime)
         setTime(0);
     };
 
