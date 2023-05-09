@@ -23,6 +23,7 @@ function BucketPreview(props) {
         <div className="home-its-been">
             <span>Its Been, </span>
             <span>{props.total.join(" : ")}</span>
+            <span> Hrs</span>
         </div>
         <div className="logs">
             <h1>Logs</h1>
@@ -36,16 +37,24 @@ function BucketPreview(props) {
     </div>
 }
 
+function preview() {
+    let flag = localStorage.getItem("totalBuckets")
+    if(flag > 0) {
+        return <BucketPreview
+            title="Sample Bucket"
+            total={[10, 0, 0]}
+            prevlogs={[[["12", "06", "12"], "( Monday )", "Note"], [["13", "06", "12"], "( tuesday )", "Note 2"]]}
+        />
+    } else {
+        return <NoBucketPreview />
+    }
+}
+
 export default function Home(props) {
     return <div id="Home">
         <h1>Latest Logs</h1>
         <div id="home-logs">
-            <NoBucketPreview />
-            <BucketPreview
-                title="New Card"
-                total={[10, 0, 0]}
-                prevlogs={[[["12", "06", "12"], "( Monday )", "Note"], [["13", "06", "12"], "( tuesday )", "Note 2"]]}
-            />
+            {preview()}
         </div>
     </div>
 }
