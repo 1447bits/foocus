@@ -9,7 +9,7 @@ export default function Info(props) {
 
         <div id="info-container">
             <span id="infopg-icon">
-                <img src={FocusIcon} />
+                <img src={FocusIcon} alt="" />
                 <h1 id='info-title'>Foocus</h1>
             </span>
 
@@ -19,7 +19,7 @@ export default function Info(props) {
 
             <Link to={"https://github.com/Mr-okey/foocus"}>
             <span id="info-Contribute-Btn">
-                <img src={githubIcon} />
+                <img src={githubIcon} alt="" />
                 Contribute
             </span>
             </Link>

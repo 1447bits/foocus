@@ -1,6 +1,6 @@
 import "../styles/bucket.css"
 import React, { useState } from 'react';
-import { Link, json } from "react-router-dom";
+import { Link } from "react-router-dom";
 import crossicon from "../icons/cross-icon.png"
 
 
@@ -38,7 +38,7 @@ function BucketPage(props) {
                 latestLogs.push(bucket.alllogs[i])
             }
 
-            restoreCards.push(<Card
+            return restoreCards.push(<Card
                 cardTitle={bucket.title}
                 totalLog={bucket.totalLog}
                 latestLogs={latestLogs}

@@ -5,7 +5,7 @@ import backicon from "../icons/backIcon.png"
 import pauseIcon from "../icons/pauseIcon.png"
 import playIcon from "../icons/playIcon.png"
 import stopIcon from "../icons/stopIcon.png"
-import { getFID } from "web-vitals";
+// import { getFID } from "web-vitals";
 
 export default function Expandcard(props) {
 
@@ -80,10 +80,10 @@ export default function Expandcard(props) {
                     </div>
                     <div className="card-controls">
                         <button id="play-pause-btn" onClick={() => startAndStop()}>
-                            <img src={isRunning ? pauseIcon : playIcon} />
+                            <img src={isRunning ? pauseIcon : playIcon} alt="" />
                         </button>
                         <button id="stop-btn" onClick={() => reset()} >
-                            <img src={stopIcon} />
+                            <img src={stopIcon} alt="" />
                         </button>
                     </div>
                     <div className="card-previousLogs">
