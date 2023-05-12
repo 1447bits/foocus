@@ -1,6 +1,6 @@
 import "../styles/bucket.css"
 import React, { useState } from 'react';
-import { Link, json } from "react-router-dom";
+import { Link } from "react-router-dom";
 import crossicon from "../icons/cross-icon.png"
 
 
@@ -44,7 +44,8 @@ function BucketPage(props) {
                 latestLogs={latestLogs}
                 id={bucket.id}
             />)
-        })
+            return null
+        })  
 
     }
 

@@ -21,7 +21,7 @@ export default function Foocus(props) {
     }
     return <div className="Foocus">
         <Routes>
-            // is logged in load home page else load loginPage
+            {/* is logged in load home page else load loginPage */}
             <Route path="/" exact element={loggedStatus === "true" ? load(<Home />) : <LoginPage />} />
             <Route path="/buckets" exact element={load(<BucketPage />)} />
             <Route path="/expendBucket" exact element={load(<Expandcard />)} />
